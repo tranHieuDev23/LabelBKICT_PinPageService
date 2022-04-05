@@ -1,7 +1,7 @@
 import { token } from "brandi";
 
 export class ApplicationConfig {
-    public screenshotDir = "screenshot";
+    public screenshotDir = "screenshots";
 
     public static fromEnv(): ApplicationConfig {
         const config = new ApplicationConfig();
