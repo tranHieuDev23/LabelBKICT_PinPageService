@@ -1,9 +1,10 @@
 syntax = "proto3";
 
-service PinnedPageService {
+service PinPageService {
     rpc CreatePinnedPage(CreatePinnedPageRequest) returns (CreatePinnedPageResponse) {}
     rpc GetPinnedPageList(GetPinnedPageListRequest) returns (GetPinnedPageListResponse) {}
     rpc GetPinnedPage(GetPinnedPageRequest) returns (GetPinnedPageResponse) {}
+    rpc UpdatePinnedPage(UpdatePinnedPageRequest) returns (UpdatePinnedPageResponse) {}
     rpc DeletePinnedPage(DeletePinnedPageRequest) returns (DeletePinnedPageResponse) {}
 }
 
@@ -21,7 +22,8 @@ message PinnedPage {
 message CreatePinnedPageRequest {
     uint32 of_user_id = 1;
     string url = 2;
-    bytes screenshot_data = 3;
+    string description = 3;
+    bytes screenshot_data = 4;
 }
 
 message CreatePinnedPageResponse {
@@ -44,6 +46,15 @@ message GetPinnedPageRequest {
 }
 
 message GetPinnedPageResponse {
+    PinnedPage pinned_page = 1;
+}
+
+message UpdatePinnedPageRequest {
+    uint32 id = 1;
+    string description = 2;
+}
+
+message UpdatePinnedPageResponse {
     PinnedPage pinned_page = 1;
 }
 
