@@ -21,6 +21,7 @@
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
     "@types/concurrently": "^7.0.0",
+    "@types/validator": "^13.7.2",
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "@typescript-eslint/parser": "^5.12.0",
     "concurrently": "^7.0.0",
@@ -34,11 +35,14 @@
   "dependencies": {
     "@grpc/grpc-js": "^1.5.5",
     "@grpc/proto-loader": "^0.6.9",
+    "@types/sharp": "^0.30.1",
     "brandi": "^4.0.1",
     "dotenv": "^16.0.0",
     "knex": "^1.0.3",
     "nodejs-snowflake": "^2.0.0",
     "pg": "^8.7.3",
+    "sharp": "^0.30.3",
+    "validator": "^13.7.0",
     "winston": "^3.6.0",
     "winston-daily-rotate-file": "^4.6.1"
   }

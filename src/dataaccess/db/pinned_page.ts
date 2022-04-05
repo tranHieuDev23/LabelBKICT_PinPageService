@@ -36,6 +36,9 @@ export interface PinnedPageDataAccessor {
     getPinnedPageWithXLock(id: number): Promise<PinnedPage | null>;
     updatePinnedPage(pinnedPage: PinnedPage): Promise<void>;
     deletePinnedPage(id: number): Promise<void>;
+    withTransaction<T>(
+        executeFunc: (dataAccessor: PinnedPageDataAccessor) => Promise<T>
+    ): Promise<T>;
 }
 
 const TabNamePinPageServicePinnedPage = "pin_page_service_pinned_page_tab";
@@ -195,6 +198,18 @@ export class PinnedPageDataAccessorImpl implements PinnedPageDataAccessor {
             this.logger.error("failed to delete pinned page", { error });
             throw ErrorWithStatus.wrapWithStatus(error, status.INTERNAL);
         }
+    }
+
+    public async withTransaction<T>(
+        executeFunc: (dataAccessor: PinnedPageDataAccessor) => Promise<T>
+    ): Promise<T> {
+        return this.knex.transaction(async (tx) => {
+            const txDataAccessor = new PinnedPageDataAccessorImpl(
+                tx,
+                this.logger
+            );
+            return executeFunc(txDataAccessor);
+        });
     }
 
     private getPinnedPageFromRow(row: Record<string, any>): PinnedPage {
