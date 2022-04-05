@@ -1,7 +1,7 @@
 {
-  "name": "labelbkict_bookmarkservice",
+  "name": "labelbkict_pinpageservice",
   "version": "1.0.0",
-  "description": "bookmark service of the label.bkict.org project",
+  "description": "page pinning service of the label.bkict.org project",
   "main": "index.js",
   "scripts": {
     "api-knex": "TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }' knex --knexfile=./knexfile.ts",
