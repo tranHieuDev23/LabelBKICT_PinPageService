@@ -61,10 +61,6 @@ export class PinnedPageManagementOperatorImpl
         screenshotData: Buffer
     ): Promise<PinnedPage> {
         const requestTime = this.timer.getCurrentTime();
-        if (!this.isValidURL(url)) {
-            this.logger.error("invalid url", { url });
-            throw new ErrorWithStatus("invalid url", status.INVALID_ARGUMENT);
-        }
         description = this.sanitizeDescription(description);
         const processedScreenshot = await this.imageProcessor.resizeImage(
             screenshotData,
@@ -163,10 +159,6 @@ export class PinnedPageManagementOperatorImpl
 
     public async deletePinnedPage(id: number): Promise<void> {
         await this.pinnedPageDM.deletePinnedPage(id);
-    }
-
-    private isValidURL(url: string): boolean {
-        return validator.isURL(url);
     }
 
     private sanitizeDescription(description: string): string {
