@@ -118,7 +118,7 @@ export class PinnedPageManagementOperatorImpl
     }
 
     public async getPinnedPage(id: number): Promise<PinnedPage> {
-        const pinnedPage = await this.getPinnedPage(id);
+        const pinnedPage = await this.pinnedPageDM.getPinnedPage(id);
         if (pinnedPage === null) {
             this.logger.error("no pinned page with the provided id found", {
                 pinnedPageId: id,
