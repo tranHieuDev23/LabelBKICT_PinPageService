@@ -65,7 +65,7 @@ export class PinnedPageDataAccessorImpl implements PinnedPageDataAccessor {
                     [ColNamePinPageServicePinnedPageScreenshotFilename]:
                         args.screenshotFilename,
                     [ColNamePinPageServicePinnedPageDescription]:
-                        args.screenshotFilename,
+                        args.description,
                 })
                 .returning([ColNamePinPageServicePinnedPagePinnedPageId])
                 .into(TabNamePinPageServicePinnedPage);
@@ -165,7 +165,7 @@ export class PinnedPageDataAccessorImpl implements PinnedPageDataAccessor {
                     [ColNamePinPageServicePinnedPageScreenshotFilename]:
                         pinnedPage.screenshotFilename,
                     [ColNamePinPageServicePinnedPageDescription]:
-                        pinnedPage.screenshotFilename,
+                        pinnedPage.description,
                 })
                 .where({
                     [ColNamePinPageServicePinnedPagePinnedPageId]:
