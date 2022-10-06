@@ -6,7 +6,7 @@ import { GRPCServerConfig } from "./grpc_service";
 import { ElasticsearchConfig } from "./elasticsearch";
 import { LogConfig } from "./log";
 
-export class ExportServiceConfig {
+export class PinPageServiceConfig {
     public logConfig = new LogConfig();
     public databaseConfig = new DatabaseConfig();
     public grpcServerConfig = new GRPCServerConfig();
@@ -14,8 +14,8 @@ export class ExportServiceConfig {
     public elasticsearchConfig = new ElasticsearchConfig();
     public applicationConfig = new ApplicationConfig();
 
-    public static fromEnv(): ExportServiceConfig {
-        const config = new ExportServiceConfig();
+    public static fromEnv(): PinPageServiceConfig {
+        const config = new PinPageServiceConfig();
         config.logConfig = LogConfig.fromEnv();
         config.databaseConfig = DatabaseConfig.fromEnv();
         config.grpcServerConfig = GRPCServerConfig.fromEnv();
@@ -26,4 +26,4 @@ export class ExportServiceConfig {
     }
 }
 
-export const EXPORT_SERVICE_CONFIG_TOKEN = token<ExportServiceConfig>("ExportServiceConfig");
+export const PIN_PAGE_SERVICE_CONFIG_TOKEN = token<PinPageServiceConfig>("PinPageServiceConfig");
