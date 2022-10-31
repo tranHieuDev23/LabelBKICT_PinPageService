@@ -4,6 +4,7 @@ import * as utils from "../utils";
 import * as config from "../config";
 import * as db from "../dataaccess/db";
 import * as elasticsearch from "../dataaccess/elasticsearch";
+import * as s3 from "../dataaccess/s3";
 import * as modules from "../module";
 import * as service from "../service";
 
@@ -17,6 +18,7 @@ export function startGRPCServer(dotenvPath: string) {
     config.bindToContainer(container);
     db.bindToContainer(container);
     elasticsearch.bindToContainer(container);
+    s3.bindToContainer(container);
     modules.bindToContainer(container);
     service.bindToContainer(container);
 
