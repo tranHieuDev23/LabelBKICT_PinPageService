@@ -6,9 +6,11 @@ import { DISTRIBUTED_CONFIG_TOKEN } from "./distributed";
 import { ELASTICSEARCH_CONFIG_TOKEN } from "./elasticsearch";
 import { GRPC_SERVER_CONFIG } from "./grpc_service";
 import { LOG_CONFIG_TOKEN } from "./log";
+import { S3_CONFIG_TOKEN } from "./s3";
 
 export * from "./log";
 export * from "./database";
+export * from "./s3";
 export * from "./grpc_service";
 export * from "./application";
 export * from "./distributed";
@@ -24,6 +26,10 @@ export function bindToContainer(container: Container): void {
     container
         .bind(DATABASE_CONFIG_TOKEN)
         .toInstance(() => container.get(PIN_PAGE_SERVICE_CONFIG_TOKEN).databaseConfig)
+        .inSingletonScope();
+    container
+        .bind(S3_CONFIG_TOKEN)
+        .toInstance(() => container.get(PIN_PAGE_SERVICE_CONFIG_TOKEN).s3Config)
         .inSingletonScope();
     container
         .bind(GRPC_SERVER_CONFIG)
